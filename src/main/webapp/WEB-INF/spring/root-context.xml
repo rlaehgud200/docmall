@@ -22,6 +22,8 @@
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property>
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"></property>
 		 -->
+		 
+		 
 		<!-- 개발용 -->
 		<!-- log4j sql 로그설정을 사용하기위한 연동구문. -->
 		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" /> 

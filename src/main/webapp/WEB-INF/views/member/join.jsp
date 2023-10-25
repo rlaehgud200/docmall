@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+    
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,13 +12,12 @@
     <meta name="generator" content="Hugo 0.101.0">
     <title>Pricing example · Bootstrap v4.6</title>
 
+ 
     <!-- Bootstrap core CSS -->
-<%@include file="/WEB-INF/views/comm/plugIn2.jsp" %>
-
+    <%@include file="/WEB-INF/views/comm/plugIn2.jsp" %>
 
 
     <!-- Favicons -->
-
 
     <style>
       .bd-placeholder-img {
@@ -35,95 +35,113 @@
         }
       }
     </style>
-
     
-
+    <!-- Custom styles for this template -->
+  
   </head>
   <body>
     
-<%@include file="/WEB-INF/views/comm/header.jsp" %>
-
+  <%@include file="/WEB-INF/views/comm/header.jsp" %>
+    
 <div class="container">
-   <div class="text-center">
+  <div class="text-center">
     <div class="box box-primary">
       <div class="box-header with-border">
       <h3 class="box-title">회원가입</h3>
       </div>
       
+      
       <form role="form">
-      <div class="box-body">
-      <div class="form-group row">
-        <label for="mbsp_id" class="col-2">아이디</label>
-        <div class="col-8">
-          <input type="text" class="form-control" name="mbsp_id" id="mbsp_id" placeholder="아이디 입력...">
+        <div class="box-body">
+        <div class="form-group row">
+          <label for="mbsp_id" class="col-2">아이디</label>
+          <div class="col-8">
+            <input type="text" class="form-control" name="mbsp_id" id="mbsp_id" placeholder="아이디 입력....">
+            </div>
+            <div class="col-2">
+            <button type="button" class="btn btn-outline-info" id="idCheck">IDCheck</button>
+          </div>
         </div>
-        <div class="col-2">
-          <button type="button" class="btn btn-outline-info" id="idCheck">ID Check</button>
+        <div class="form-group row">
+          <label for="mbsp_password" class="col-2">비밀번호</label>
+          <div class="col-10">
+            <input type="password" class="form-control" name="mbsp_password" id="mbsp_password" placeholder="비밀번호 입력....">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="mbsp_password" class="col-2">비밀번호</label>
-        <div class="col-10">
-          <input type="password" class="form-control" name="mbsp_password" id="mbsp_password" placeholder="비밀번호 입력...">
+        <div class="form-group row">
+          <label for="mbsp_password2" class="col-2">비밀번호 확인</label>
+          <div class="col-10">
+            <input type="password" class="form-control" id="mbsp_password2" placeholder="비밀번호 확인....">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="mbsp_password2" class="col-2">비밀번호 확인</label>
-        <div class="col-10">
-          <input type="password" class="form-control" id="mbsp_password2" placeholder="비밀번호 확인...">
+        <div class="form-group row">
+          <label for="mbsp_name" class="col-2">이름</label>
+          <div class="col-10">
+            <input type="text" class="form-control" name="mbsp_name" id="mbsp_name" placeholder="이름입력....">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="mbsp_name" class="col-2">이름</label>
-        <div class="col-10">
-          <input type="text" class="form-control" name="mbsp_name" id="mbsp_name" placeholder="이름입력...">
+        <div class="form-group row">
+          <label for="mbsp_email" class="col-2">전자우편</label>
+          <div class="col-8">
+            <input type="email" class="form-control" name="mbsp_email" id="mbsp_email" placeholder="전자우편입력....">
+          </div>
+          <div class="col-2">
+            <button type="button" class="btn btn-outline-info" id="mailAuth">메일인증</button>
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="mbsp_email" class="col-2">전자우편</label>
-        <div class="col-10">
-          <input type="email" class="form-control" name="mbsp_email" id="mbsp_email" placeholder="전자우편입력...">
+        <div class="form-group row">
+          <label for="mbsp_id" class="col-2">인증</label>
+          <div class="col-8">
+            <input type="text" class="form-control" name="authcode" id="authcode" placeholder="메일인증코드 입력....">
+            </div>
+            <div class="col-2">
+            <button type="button" class="btn btn-outline-info" id="idCheck">인증확인</button>
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="sample2_postcode" class="col-2">우편번호</label>
-        <div class="col-8">
-          <input type="text" class="form-control" name="mbsp_zipcode" id="sample2_postcode" placeholder="우편번호...">
+        <div class="form-group row">
+          <label for="sample2_postcode" class="col-2">우편번호</label>
+          <div class="col-8">
+            <input type="text" class="form-control" name="mbsp_zipcode" id="sample2_postcode" placeholder="우편번호 입력....">
+          </div>
+          <div class="col-2">
+          <button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-outline-info" >우편번호 찾기</button>
+          </div>
         </div>
-        <div class="col-2">
-        	<button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-outline-info">우편번호 찾기</button>
+        <div class="form-group row">
+          <label for="sample2_address" class="col-2">기본주소</label>
+          <div class="col-10">
+            <input type="text" class="form-control" name="mbsp_addr" id="sample2_address" placeholder="기본주소 입력.....">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="sample2_address" class="col-2">기본주소</label>
-        <div class="col-10">
-          <input type="text" class="form-control" name="mbsp_addr" id="sample2_address" placeholder="기본주소입력...">
+        <div class="form-group row">
+          <label for="sample2_detailAddress" class="col-2">상세주소</label>
+          <div class="col-10">
+            <input type="text" class="form-control" name="mbsp_deaddr" id="sample2_detailAddress" placeholder="상세주소 입력...">
+            <input type="hidden" id="sample2_extraAddress" placeholder="참고항목">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="sample2_detailAddress" class="col-2">상세주소</label>
-        <div class="col-10">
-          <input type="text" class="form-control" name="mbsp_deaddr" id="sample2_detailAddress" placeholder="상세주소입력...">
-          <input type="hidden" id="sample2_extraAddress" placeholder="참고항목">
+        <div class="form-group row">
+          <label for="mbsp_phone" class="col-2">전화번호</label>
+          <div class="col-10">
+            <input type="text" class="form-control" name="mbsp_phone" id="mbsp_phone" placeholder="전화번호 입력....">
+          </div>
         </div>
-      </div>
-      <div class="form-group row">
-        <label for="mbsp_phone" class="col-2">전화번호</label>
-        <div class="col-10">
-          <input type="text" class="form-control" name="mbsp_phone" id="mbsp_phone" placeholder="전화번호입력...">
+        
+        
         </div>
-      </div>
-      
-      </div>
-      
-      <div class="box-footer">
-      <button type="submit" class="btn btn-primary">회원가입</button>
-      </div>
-      </form>
-      </div>
-   </div>
+        
+        <div class="box-footer">
+        <button type="submit" class="btn btn-primary">회원가입</button>
+        </div>
+        </form>
 
-  <%@include file="/WEB-INF/views/comm/footer.jsp" %>
+      
+      </div>
+      
+
+  
+
+ <%@include file="/WEB-INF/views/comm/footer.jsp" %>
 </div>
 
 <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
@@ -220,27 +238,72 @@
     }
 </script>
 
-<%@include file="/WEB-INF/views/comm/plugIn.jsp" %>
-  
-<script>
-  // jquery.slim.min.js 파일에 jquery 명령어가 정의되어 있음
-  // 별칭: $  -> jQuery()함수
-  // ready()이벤트 메서드 : 브라우저가 html태그를 모두 읽고난 후에 동작하는 이벤트 특징.
-  // 자바스크립트 이벤트 등록 : https://www.w3schools.com/js/js_htmldom_eventlistener.asp
-  $(document).ready(function() {
-    // document.getElementById("idCheck");
-    $("#idCheck").click(function() {
-      // alert("아이디 중복체크");
-      if($("#mbsp_id").val() == "") {
-        alert("아이디를 입력하세요.");
-        $("#mbsp_id").focus();
-        return;
-      }
 
-      // 아이디 중복체크
-    });
-  });
-</script>
+
+<%@include file="/WEB-INF/views/comm/plugIn.jsp" %>
+
+<script>
+  // jquery.slim.min.js 파일에 jQuery 명령어가 정의되어 있음
+  // $(): JQuery() 함수 사용 별칭
+  // ready(): 브라우저가 html 태그를 모두 읽고난 후에 동작하는 이벤트 메서드
+  // JS 이벤트 등록: https://www.w3schools.com/js/js_htmldom_eventlistener.asp 
+  $(document).ready(function() {
+
+    let useIDCheck = false; //아이디 중복체크 사용유무 확인
+     // JS 문법: document.getElementById("idCheck");
+    $("#idCheck").click(function() {
+        //   alert("아이디 중복 체크");
+        if($("#mbsp_id").val() == "") {
+          alert("아이디를 입력하세요.");
+          $("#mbsp_id").focus();
+          return;
+        }
+
+        // 아이디 중복 체크
+        $.ajax({
+          url : '/member/idCheck' ,
+          type : 'get' ,
+          dataType : 'text',
+          data: {mbsp_id : $("#mbsp_id").val() } ,
+          success : function(result) {
+            if(result == "yes") {
+              alert("아이디 사용가능");
+              useIDCheck = "true";
+            }else{
+              alert("아이디 사용불가능");
+              useIDCheck = "false";
+
+              $("#mbsp_id").val(""); //아이디 텍스트박스를 값을 즈음
+              $("#mbsp_id").focus(); //포커스
+
+            }
+          }
+        });
+      });
+
+ // 메일 인증 요청
+ $("#mailAuth").click(function () {
+                     if ($("#mbsp_email").val() == "") {
+                        alert("이메일을 입력하세요");
+                        $("#mbsp_email").focus();
+                        return;
+                     }
+
+                     $.ajax({
+                        url: '/email/authcode',
+                        type: 'get',
+                        dataType: 'text', // 스프링에서 보내는 데이터의 타입: <String> -> "success" -> text
+                        data: { receiverMail: $("#mbsp_email").val() }, // EmailDTO ─ private String receiverMail;
+                        success: function(result) {
+                           if(result == "success") {
+                              alert("인증 메일이 발송되었습니다. 메일 확인 바랍니다.")
+                           }
+                        }
+                     });
+
+                  });
+               });
+            </script>
   </body>
 </html>
     
