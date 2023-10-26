@@ -16,7 +16,7 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j 
 @RequiredArgsConstructor
-@RestController // 컨트롤러 클래스가 ajax용도로만 사용 할 때 선언 어노테이션을 적용
+@RestController // 컨트롤러 클래스가 ajax용도로만 사용 할 때 선언. 어노테이션을 적용
 @RequestMapping("/email/*") // 현재는 jsp 사용안할 예정
 public class EmailController {
 
@@ -50,4 +50,32 @@ public class EmailController {
 	
 	return entity;
 }
+	
+	//인증코드 확인 = 세션 형태로 저장한 정보를 이용
+	@GetMapping("/confirmAuthcode")
+	public ResponseEntity<String> confirmAuthcode(String authCode, HttpSession session){
+		
+		ResponseEntity<String> entity = null;
+		
+//		String sAuthCode = "";
+		if(session.getAttribute("authCode") != null) {
+			 
+			//if가 true면 인증이 일치
+			if(authCode.equals(session.getAttribute("authCode"))) {
+				entity = new ResponseEntity<String>("success", HttpStatus.OK);
+		}else {
+			entity = new ResponseEntity<String>("fail", HttpStatus.OK);
+		
+		}
+		}else {
+			
+			//세션이 소멸 되었을 때
+			entity = new ResponseEntity<String>("request", HttpStatus.OK);
+		}
+		
+	
+		
+		return entity;
+		
+	}
 }

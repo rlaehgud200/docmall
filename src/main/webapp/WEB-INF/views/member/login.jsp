@@ -36,102 +36,52 @@
       }
     </style>
     
-    <!-- Custom styles for this template -->
+    <script>
+      let msg ='${msg}';
+      if(msg !="") {
+        alert(msg);
+      }
+
+    </script>
   
   </head>
   <body>
     
   <%@include file="/WEB-INF/views/comm/header.jsp" %>
     
-<div class="container">
-  <div class="text-center">
+  <div class="container">
+    <div class="text-center">
     <div class="box box-primary">
-      <div class="box-header with-border">
-      <h3 class="box-title">회원가입</h3>
+  <div class="box-header with-border">
+  <h1 class="box-title">회원가입</h3>
+  </div>
+   <div class="mb-4"></div>
+    <div class="mb-4"></div>
+      <div class="mb-4"></div>
+  
+  <form role="form" id="loginform" method="post" action="/member/login">
+  <di class="box-body">
+  <div class="form-group">
+ 
+    <div class="form-group row">
+      <label for="mbsp_id" class="col-sm-2 col-form-label">아이디</label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="mbsp_id" name="mbsp_id" placeholder="아이디입력...">
       </div>
-      
-      
-      <form role="form" id="joinForm" method="post" action="/member/join">
-        <div class="box-body">
-        <div class="form-group row">
-          <label for="mbsp_id" class="col-2">아이디</label>
-          <div class="col-8">
-            <input type="text" class="form-control" name="mbsp_id" id="mbsp_id" placeholder="아이디 입력....">
-            </div>
-            <div class="col-2">
-            <button type="button" class="btn btn-outline-info" id="idCheck">IDCheck</button>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="mbsp_password" class="col-2">비밀번호</label>
-          <div class="col-10">
-            <input type="password" class="form-control" name="mbsp_password" id="mbsp_password" placeholder="비밀번호 입력....">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="mbsp_password2" class="col-2">비밀번호 확인</label>
-          <div class="col-10">
-            <input type="password" class="form-control" id="mbsp_password2" placeholder="비밀번호 확인....">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="mbsp_name" class="col-2">이름</label>
-          <div class="col-10">
-            <input type="text" class="form-control" name="mbsp_name" id="mbsp_name" placeholder="이름입력....">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="mbsp_email" class="col-2">전자우편</label>
-          <div class="col-8">
-            <input type="email" class="form-control" name="mbsp_email" id="mbsp_email" placeholder="전자우편입력....">
-          </div>
-          <div class="col-2">
-            <button type="button" class="btn btn-outline-info" id="mailAuth">메일인증</button>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="mbsp_id" class="col-2">메일인증</label>
-          <div class="col-8">
-            <input type="text" class="form-control" name="authCode" id="authCode" placeholder="메일인증코드 입력....">
-            </div>
-            <div class="col-2">
-            <button type="button" class="btn btn-outline-info" id="btnCofirmAuth">인증확인</button>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="sample2_postcode" class="col-2">우편번호</label>
-          <div class="col-8">
-            <input type="text" class="form-control" name="mbsp_zipcode" id="sample2_postcode" placeholder="우편번호 입력....">
-          </div>
-          <div class="col-2">
-          <button type="button" onclick="sample2_execDaumPostcode()" class="btn btn-outline-info" >우편번호 찾기</button>
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="sample2_address" class="col-2">기본주소</label>
-          <div class="col-10">
-            <input type="text" class="form-control" name="mbsp_addr" id="sample2_address" placeholder="기본주소 입력.....">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="sample2_detailAddress" class="col-2">상세주소</label>
-          <div class="col-10">
-            <input type="text" class="form-control" name="mbsp_deaddr" id="sample2_detailAddress" placeholder="상세주소 입력...">
-            <input type="hidden" id="sample2_extraAddress" placeholder="참고항목">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="mbsp_phone" class="col-2">전화번호</label>
-          <div class="col-10">
-            <input type="text" class="form-control" name="mbsp_phone" id="mbsp_phone" placeholder="전화번호 입력....">
-          </div>
-        </div>
-        
-        
-        </div>
+
+    </div>
+    <div class="form-group row">
+      <label for="mbsp_password" class="col-sm-2 col-form-label">비밀번호</label>
+      <div class="col-sm-8">
+        <input type="password" class="form-control" id="mbsp_password" name="mbsp_password" placeholder="비밀번호 입력...">
+      </div>
+      </div>
+    </div>
+   
+   </div>
         
         <div class="box-footer">
-        <button type="button" class="btn btn-primary" id="btnJoin">회원가입</button>
+        <button type="submit" class="btn btn-primary" id="btnlogin">로그인</button>
         </div>
         </form>
 
