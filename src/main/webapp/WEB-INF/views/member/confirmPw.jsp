@@ -53,13 +53,13 @@
     <div class="text-center">
     <div class="box box-primary">
   <div class="box-header with-border">
-  <h1 class="box-title">회원가입</h3>
+  <h1 class="box-title">회원 수정 인증확인</h3>
   </div>
    <div class="mb-4"></div>
     <div class="mb-4"></div>
       <div class="mb-4"></div>
   
-  <form role="form" id="loginform" method="post" action="/member/login">
+  <form role="form" id="confirmPwform" method="post" action="/member/confirmPw">
   <di class="box-body">
   <div class="form-group">
  
@@ -83,7 +83,7 @@
         <div class="box-footer">
         <button type="submit" class="btn btn-primary" id="btnlogin">로그인</button>
         </div>
-    </form>
+        </form>
 
       
       </div>
@@ -199,123 +199,9 @@
   // JS 이벤트 등록: https://www.w3schools.com/js/js_htmldom_eventlistener.asp 
   $(document).ready(function() {
 
-    let useIDCheck = false; //아이디 중복체크 사용유무 확인
-     // JS 문법: document.getElementById("idCheck");
-    $("#idCheck").click(function() {
-        //   alert("아이디 중복 체크");
-        if($("#mbsp_id").val() == "") {
-          alert("아이디를 입력하세요.");
-          $("#mbsp_id").focus();
-          return;
-        }
-
-        // 아이디 중복 체크
-        $.ajax({
-          url : '/member/idCheck' ,
-          type : 'get' ,
-          dataType : 'text',
-          data: {mbsp_id : $("#mbsp_id").val() } ,
-          success : function(result) {
-            if(result == "yes") {
-              alert("아이디 사용가능");
-              useIDCheck = "true";
-            }else{
-              alert("아이디 사용불가능");
-              useIDCheck = "false";
-
-              $("#mbsp_id").val(""); //아이디 텍스트박스를 값을 즈음
-              $("#mbsp_id").focus(); //포커스
-
-            }
-          }
-        });
-      });
-
- // 메일 인증 요청
- $("#mailAuth").click(function () {
-                     if ($("#mbsp_email").val() == "") {
-                        alert("이메일을 입력하세요");
-                        $("#mbsp_email").focus();
-                        return;
-                     }
-
-                     $.ajax({
-                        url: '/email/authcode',
-                        type: 'get',
-                        dataType: 'text', // 스프링에서 보내는 데이터의 타입: <String> -> "success" -> text
-                        data: { receiverMail: $("#mbsp_email").val() }, // EmailDTO ─ private String receiverMail;
-                        success: function(result) {
-                           if(result == "success") {
-                              alert("인증 메일이 발송되었습니다. 메일 확인 바랍니다.")
-                           }
-                        }
-                     });
-        
-                  });
-
-let isConfirmAuth = false; // 메일인증을 인한 상태
-//인증확인 <button type="button" class="btn btn-outline-info" id="btnCofirmAuth">인증확인</button>
-$("#btnCofirmAuth").click(function() {
-
-
-  if($("#authCode").val() =="") {
-    alert("인증코드를 입력하세요.");
-    $("#authCode").focus();
-    return;
-  }
-
-  //인증 확인 요청
-  $.ajax({
-    url:'/email/confirmAuthcode',
-    type:'get',
-    dataType:'text',
-    data : {authCode : $("#authCode").val()},
-    success : function(result){
-      if(result == "success") {
-             alert("인증 성공");
-             isConfirmAuth = true;
-      }else if(result == "fail") {
-              alert("인증코드가 틀립니다. 확인바랍니다.");
-              $("#authCode").val("");
-              isConfirmAuth = false; 
-      }else if(result == "request"){
-             alert("메일인증 요청을 다시 해주세요")
-             $("#authCode").val(""); 
-             isConfirmAuth = false;
-      }
-
-    }
-
-  });
-
- 
-});
-
-
-
-//form 태그 참조. <form role="form" id="joinForm" method="post" action="">
-let joinForm = $("#joinForm");
-
-
-//회원가입 버튼
-$("#btnJoin").click(function (){
-
-  //회원가입 유효성 검사
-
- if(!useIDCheck) {
-    alert("아이디 중복체크 바랍니다.");
-    return;
- } 
-   if(!isConfirmAuth) {
-    alert("메일인증 확인 바랍니다.");
-    return;
-   }
-
-   //폼 전송작업 
-   joinForm.submit();
-});
+   
                });
-            </script>
+   </script>
   </body>
 </html>
     
